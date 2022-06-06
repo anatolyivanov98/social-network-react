@@ -8,26 +8,3 @@
   width: 1200px;
   margin: 0 auto;
 }
-
-.header {
-  grid-area: h;
-  background: green;
-}
-
-.header img {
-  width: 100px;
-}
-
-.nav {
-  grid-area: n;
-  background: cornsilk;
-}
-
-.content {
-  grid-area: c;
-  background: burlywood;
-}
-
-.content img {
-  width: 100%;
-}

@@ -1,0 +1,8 @@
+.content {
+    grid-area: c;
+    background: burlywood;
+}
+
+.content  img {
+    max-width: 100%;
+}
