@@ -1,48 +1,39 @@
 import React from "react";
 import classes from "./Dialogs.module.css";
-import {NavLink} from "react-router-dom";
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
-const DialogItem = (props) => {
-  const path = `/dialogs/${props.id}`
-
-  return (
-    <div className={`${classes.dialog} ${classes.active}`}>
-      <NavLink to={path}>{props.name}</NavLink>
-    </div>
-  )
-}
 
 const Dialogs = (props) => {
-  const dialogsData = [
-    {id: 1, name: 'Tolya'},
-    {id: 2, name: 'Nikita'},
-    {id: 3, name: 'Serega'},
-    {id: 4, name: 'Shamil'},
-    {id: 5, name: 'Kolya'}
-  ]
 
-  const messagesData = [
-    {id: 1, message: 'Hello'},
-    {id: 2, message: 'How are you'},
-    {id: 3, message: 'What is your name'},
-  ]
+  const dialogElements = props.state.dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} />)
+  const messageElements = props.state.messages.map( message => <Message message={message.message} /> )
 
-    return (
-        <div className={classes.dialogs}>
-            <div className={classes.dialogsItems}>
-              <DialogItem name='Tolya' id='1' />
-              <DialogItem name='Nikita' id='2' />
-              <DialogItem name='Serega' id='3' />
-              <DialogItem name='Shamil' id='4' />
-              <DialogItem name='Kolya' id='5' />
-            </div>
-            <div className={classes.messages}>
-                <div className={classes.message}>Hello</div>
-                <div className={classes.message}>How are you</div>
-                <div className={classes.message}>What is your name</div>
-            </div>
+  const newMessageElement = React.useRef()
+
+  const sendMessage = () => {
+    const value = newMessageElement.current.value
+    console.log('sendMessage: ', value)
+  }
+
+  return (
+    <div className={classes.dialogs}>
+        <div className={classes.dialogsItems}>
+          { dialogElements }
         </div>
-    )
+        <div className={classes.messages}>
+          { messageElements }
+          <div>
+            <div>
+              <textarea ref={newMessageElement} cols="30" rows="4"></textarea>
+            </div>
+            <div>
+              <button onClick={sendMessage}>Send message</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  )
 }
 
 export default Dialogs

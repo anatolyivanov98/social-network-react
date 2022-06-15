@@ -1,4 +1,4 @@
-.nav {
+.navbar {
     grid-area: n;
     background: #3d90ce;
     padding: 20px;
@@ -12,4 +12,31 @@
 
 .item a.active {
     color: gold;
+}
+
+.friendsBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friendsTitle {
+    color: black;
+}
+
+.friendsItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friendsIcon {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: lightgreen;
+}
+
+.friendsName {
+    color: white;
 }
