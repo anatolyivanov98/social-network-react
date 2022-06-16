@@ -10,7 +10,7 @@ const MyPosts = (props) => {
 
   const addPost = () => {
     const value = newPostElement.current.value
-    console.log('addPost', value)
+    props.addPost(value)
   }
 
   return (
