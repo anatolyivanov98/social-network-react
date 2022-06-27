@@ -4,13 +4,19 @@ import React from "react";
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/store-redux";
 import App from "./App";
+import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const rerenderEntriesTree = (state) => {
   root.render(
     <React.StrictMode>
-      <App state={state} dispatch={store.dispatch.bind(store)} store={store}/>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
     </React.StrictMode>
   );
 }
